@@ -42,7 +42,10 @@ export const useLeadsData = (): UseLeadsDataResult => {
     return () => clearInterval(interval);
   }, [loadData]);
 
-  const isConfigured = Boolean(import.meta.env.VITE_GOOGLE_SHEETS_API_KEY && import.meta.env.VITE_SPREADSHEET_ID);
+  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY || 'AIzaSyDbT3uTumchoG7Y1uaoKJkMPC4hZCS5XaI';
+  const spreadsheetId = import.meta.env.VITE_SPREADSHEET_ID || '11adBXV_SEZU4ULPXt_23iR61wCuRcrhYm7DIHTUinvc';
+
+  const isConfigured = Boolean(apiKey && spreadsheetId);
   
   return { leads, loading, error, lastUpdated, refetch: loadData, isConfigured };
 };
