@@ -1,0 +1,52 @@
+.filtersContainer {
+  display: flex;
+  gap: 1.5rem;
+  background-color: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  border: 1px solid var(--border-light);
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filterGroup label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.select, .input {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.select:focus, .input:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* Fix for date input icon color in dark mode */
+.input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.input::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.8;
+}

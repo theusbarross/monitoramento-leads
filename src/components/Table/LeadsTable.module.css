@@ -1,0 +1,162 @@
+.tableContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: var(--bg-card);
+}
+
+.table th {
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-main);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .table th {
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+}
+
+.table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leadName {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.leadCpf {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-400);
+  }
+}
+
+.phone {
+  font-family: monospace;
+  color: var(--text-secondary);
+}
+
+.date {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem !important;
+  color: var(--text-muted) !important;
+  font-style: italic;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pageInfo {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.pageControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.currentPage {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.pageBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageBtn:not(:disabled):hover {
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+  border-color: var(--primary-200);
+}
+
+.pageBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--bg-main);
+}
