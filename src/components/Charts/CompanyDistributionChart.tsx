@@ -66,7 +66,7 @@ export const CompanyDistributionChart: React.FC<CompanyDistributionChartProps> =
               itemStyle={{ color: 'var(--primary-600)', fontWeight: 600 }}
             />
             <Bar dataKey="count" name="Leads" radius={[0, 4, 4, 0]}>
-              {data.map((entry, index) => (
+              {data.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Bar>
