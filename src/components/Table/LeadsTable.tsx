@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './LeadsTable.module.css';
 import type { Lead } from '../../types';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { parseSheetDate } from '../../utils/formatters';
 
 interface LeadsTableProps {
   leads: Lead[];
@@ -12,9 +13,17 @@ const PAGE_SIZE = 10;
 export const LeadsTable: React.FC<LeadsTableProps> = ({ leads }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(leads.length / PAGE_SIZE);
+  const sortedLeads = React.useMemo(() => {
+    return [...leads].sort((a, b) => {
+      const dateA = parseSheetDate(a.dataHora).getTime();
+      const dateB = parseSheetDate(b.dataHora).getTime();
+      return dateB - dateA;
+    });
+  }, [leads]);
+
+  const totalPages = Math.ceil(sortedLeads.length / PAGE_SIZE);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
-  const currentLeads = leads.slice(startIndex, startIndex + PAGE_SIZE);
+  const currentLeads = sortedLeads.slice(startIndex, startIndex + PAGE_SIZE);
 
   const handlePrevPage = () => {
     setCurrentPage(prev => Math.max(1, prev - 1));
