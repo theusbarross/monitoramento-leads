@@ -42,8 +42,8 @@ export const useLeadsData = (): UseLeadsDataResult => {
     return () => clearInterval(interval);
   }, [loadData]);
 
-  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY || 'AIzaSyDbT3uTumchoG7Y1uaoKJkMPC4hZCS5XaI';
-  const spreadsheetId = import.meta.env.VITE_SPREADSHEET_ID || '11adBXV_SEZU4ULPXt_23iR61wCuRcrhYm7DIHTUinvc';
+  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY || '';
+  const spreadsheetId = import.meta.env.VITE_SPREADSHEET_ID || '';
 
   const isConfigured = Boolean(apiKey && spreadsheetId);
   

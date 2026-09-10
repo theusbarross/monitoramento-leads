@@ -2,8 +2,8 @@ import type { Lead } from '../types';
 import { generateId } from '../types';
 
 export const fetchLeads = async (): Promise<Lead[]> => {
-  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY || 'AIzaSyDbT3uTumchoG7Y1uaoKJkMPC4hZCS5XaI';
-  const spreadsheetId = import.meta.env.VITE_SPREADSHEET_ID || '11adBXV_SEZU4ULPXt_23iR61wCuRcrhYm7DIHTUinvc';
+  const apiKey = import.meta.env.VITE_GOOGLE_SHEETS_API_KEY || '';
+  const spreadsheetId = import.meta.env.VITE_SPREADSHEET_ID || '';
 
   if (!apiKey || !spreadsheetId) {
     console.warn('API Key ou Spreadsheet ID não configurados no .env. Usando dados vazios.');
