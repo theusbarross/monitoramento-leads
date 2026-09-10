@@ -93,6 +93,16 @@ export const Dashboard: React.FC = () => {
     return { total, today: todayCount, lastHour: lastHourCount, topCompany, topCompanyCount: maxCount };
   }, [filteredLeads]);
 
+  // Handlers para cliques nos gráficos
+  const handleCompanyClick = (company: string) => {
+    setSelectedCompany(company);
+  };
+
+  const handleDateClick = (dateString: string) => {
+    setStartDate(dateString);
+    setEndDate(dateString);
+  };
+
   if (!isConfigured) {
     return (
       <Layout lastUpdated={lastUpdated} onRefresh={refetch} loading={loading}>
@@ -160,10 +170,10 @@ export const Dashboard: React.FC = () => {
 
       <div className={styles.gridCharts}>
         <div className={styles.chartPlaceholder}>
-          <LeadsTrendChart leads={filteredLeads} />
+          <LeadsTrendChart leads={filteredLeads} onDateClick={handleDateClick} />
         </div>
         <div className={styles.chartPlaceholder}>
-          <CompanyDistributionChart leads={filteredLeads} />
+          <CompanyDistributionChart leads={filteredLeads} onCompanyClick={handleCompanyClick} />
         </div>
       </div>
       

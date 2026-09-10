@@ -4,9 +4,10 @@ import type { Lead } from '../../types';
 
 interface CompanyDistributionChartProps {
   leads: Lead[];
+  onCompanyClick?: (company: string) => void;
 }
 
-export const CompanyDistributionChart: React.FC<CompanyDistributionChartProps> = ({ leads }) => {
+export const CompanyDistributionChart: React.FC<CompanyDistributionChartProps> = ({ leads, onCompanyClick }) => {
   const data = useMemo(() => {
     const counts: Record<string, number> = {};
     
@@ -30,6 +31,12 @@ export const CompanyDistributionChart: React.FC<CompanyDistributionChartProps> =
   }
 
   const colors = ['#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#dbeafe'];
+
+  const handleClick = (data: any) => {
+    if (onCompanyClick && data && data.name) {
+      onCompanyClick(data.name);
+    }
+  };
 
   return (
     <div style={{ width: '100%', height: '100%', minHeight: 300, display: 'flex', flexDirection: 'column' }}>
@@ -65,9 +72,13 @@ export const CompanyDistributionChart: React.FC<CompanyDistributionChartProps> =
               }}
               itemStyle={{ color: 'var(--primary-600)', fontWeight: 600 }}
             />
-            <Bar dataKey="count" name="Leads" radius={[0, 4, 4, 0]}>
+            <Bar dataKey="count" name="Leads" radius={[0, 4, 4, 0]} onClick={handleClick}>
               {data.map((_, index) => (
-                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={colors[index % colors.length]} 
+                  style={{ cursor: onCompanyClick ? 'pointer' : 'default' }}
+                />
               ))}
             </Bar>
           </BarChart>
